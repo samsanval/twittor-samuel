@@ -7,11 +7,16 @@ import (
 
 	"github.com/gorilla/mux"
 	"github.com/rs/cors"
+	"github.com/samsanval/twittor-samuel/middlew"
+	"github.com/samsanval/twittor-samuel/routes"
 )
 
 /*Handlers set port and handler*/
 func Handlers() {
 	router := mux.NewRouter()
+
+	router.HandleFunc("/register", middlew.CheckBBDD(routes.Register)).Methods("POST")
+
 	PORT := os.Getenv("PORT")
 	if PORT == "" {
 		PORT = "8080"
