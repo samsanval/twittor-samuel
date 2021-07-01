@@ -31,11 +31,11 @@ func Register(w http.ResponseWriter, r *http.Request) {
 	}
 	_, status, err := bd.InsertUser(user)
 	if err != nil {
-		http.Error(w, "An error ocurred", 400)
+		http.Error(w, "An error ocurred "+err.Error(), 400)
 		return
 	}
 	if status == false {
-		http.Error(w, "An error ocurred", 400)
+		http.Error(w, "Cannot insert the user", 400)
 		return
 	}
 	w.WriteHeader(http.StatusCreated)
