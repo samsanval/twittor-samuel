@@ -13,7 +13,7 @@ func CheckIfExistsUser(email string) (models.User, bool, string) {
 	ctx, cancel := context.WithTimeout(context.Background(), 15*time.Second)
 	defer cancel()
 	db := MongoConnection.Database("twittor-samuel")
-	collectionUser := db.Collection("users")
+	collectionUser := db.Collection("users-copy")
 	condition := bson.M{"email": email}
 	var results models.User
 	err := collectionUser.FindOne(ctx, condition).Decode(&results)

@@ -14,7 +14,7 @@ func SearchProfile(ID string) (models.User, error) {
 	ctx, cancel := context.WithTimeout(context.Background(), time.Second*15)
 	defer cancel()
 	database := MongoConnection.Database("twittor-samuel")
-	collection := database.Collection("users")
+	collection := database.Collection("users-copy")
 	var profile models.User
 	objectID, _ := primitive.ObjectIDFromHex(ID)
 
